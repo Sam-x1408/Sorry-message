@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>For You 💌</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: #fff0f6;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* center vertically */
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+/* MAIL */
+.mail {
+  width: 280px;
+  height: 180px;
+  background: #fff;
+  border-radius: 12px;
+  position: relative;
+  margin-bottom: 0; /* reset negative margin */
+  transition: transform 1s;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  transform: translateY(200px); /* start from bottom */
+}
+
+.mail.show {
+  transform: translateY(0); /* animate to center */
+}
+
+.seal {
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 36px;
+}
+
+.text {
+  position: absolute;
+  bottom: -40px;
+  width: 100%;
+  text-align: center;
+  color: #d6336c;
+  font-size: 16px;
+}
+
+/* LETTER */
+.letter {
+  position: absolute;
+  top: 20px;
+  left: 10px;
+  right: 10px;
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  display: none;
+  font-size: 14px;
+  color: #d6336c;
+  line-height: 1.5;
+}
+</style>
+</head>
+
+<body>
+
+<div class="mail" id="mail">
+  <div class="seal">💖</div>
+  <div class="text">Swipe up to peel</div>
+  <div class="letter" id="letter">
+    I M REALLY SORRY MY BABY PLEASE FORGIVE ME MY PENGUIN…<br><br>
+    I M REALLYYYY SOOO SORRYYYY DARLING.. UMAHHHH PLEASE MANJAO NA…<br><br>
+    I MISS YOUUU SOOO MUCHHHH..<br>
+    I LOVEEEE YOUUUUUU SOOOOO MUCHHHHH FOREVER..<br><br>
+    MY YANU 💕
+  </div>
+</div>
+
+<script>
+const mail = document.getElementById("mail");
+const letter = document.getElementById("letter");
+let startY = 0;
+
+// animate mail from bottom to center
+setTimeout(() => mail.classList.add("show"), 500);
+
+mail.addEventListener("touchstart", e => {
+  startY = e.touches[0].clientY;
+});
+
+mail.addEventListener("touchend", e => {
+  if (startY - e.changedTouches[0].clientY > 50) {
+    letter.style.display = "block";
+  }
+});
+</script>
+
+</body>
+</html>
